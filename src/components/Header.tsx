@@ -41,11 +41,11 @@ const Header = () => {
 
   return (
     <header className={`fixed w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+      scrolled ? 'bg-white shadow-md py-2' : 'bg-white py-4'
     }`}>
       <div className="container-custom mx-auto flex justify-between items-center">
         <Link to="/" className="flex items-center">
-          <div className={`text-2xl font-serif font-bold ${scrolled ? 'text-school-primary' : 'text-white'}`}>
+          <div className="text-2xl font-serif font-bold text-school-primary">
             Oakridge Academy
           </div>
         </Link>
@@ -56,9 +56,7 @@ const Header = () => {
             <Link 
               key={link.path} 
               to={link.path} 
-              className={`nav-link ${location.pathname === link.path ? 'nav-link-active' : ''} ${
-                scrolled ? 'text-gray-700 hover:text-school-primary' : 'text-white hover:text-school-accent'
-              }`}
+              className={`nav-link ${location.pathname === link.path ? 'nav-link-active' : ''} text-gray-700 hover:text-school-primary`}
             >
               {link.name}
             </Link>
@@ -72,9 +70,9 @@ const Header = () => {
           aria-label="Toggle menu"
         >
           {isMenuOpen ? (
-            <X className={`h-6 w-6 ${scrolled ? 'text-school-primary' : 'text-white'}`} />
+            <X className="h-6 w-6 text-school-primary" />
           ) : (
-            <Menu className={`h-6 w-6 ${scrolled ? 'text-school-primary' : 'text-white'}`} />
+            <Menu className="h-6 w-6 text-school-primary" />
           )}
         </button>
       </div>
