@@ -1,14 +1,27 @@
-
 import React, { useState } from 'react';
 import PageBanner from '../components/PageBanner';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  subject?: string;
+  message?: string;
+}
+
 const Contact = () => {
   const { toast } = useToast();
   
-  // Form state
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     phone: '',
@@ -16,11 +29,10 @@ const Contact = () => {
     message: '',
   });
   
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   
-  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -28,7 +40,6 @@ const Contact = () => {
       [name]: value,
     });
     
-    // Clear error when field is edited
     if (errors[name]) {
       setErrors({
         ...errors,
@@ -37,9 +48,8 @@ const Contact = () => {
     }
   };
   
-  // Form validation
   const validateForm = () => {
-    const newErrors = {};
+    const newErrors: FormErrors = {};
     
     if (!formData.name.trim()) {
       newErrors.name = 'Name is required';
@@ -65,14 +75,12 @@ const Contact = () => {
     return Object.keys(newErrors).length === 0;
   };
   
-  // Form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     
     if (validateForm()) {
       setIsSubmitting(true);
       
-      // Simulate API call
       setTimeout(() => {
         setIsSubmitting(false);
         setSubmitted(true);
@@ -85,7 +93,6 @@ const Contact = () => {
     }
   };
   
-  // Reset form after submission
   const handleNewMessage = () => {
     setFormData({
       name: '',
@@ -105,11 +112,9 @@ const Contact = () => {
         backgroundImage="https://images.unsplash.com/photo-1544928147-79a2dbc1f669?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
       />
 
-      {/* Contact Section */}
       <section className="section bg-white">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Contact Information */}
             <div className="lg:col-span-1">
               <h2 className="section-title">Get In Touch</h2>
               <p className="mb-8">
@@ -174,7 +179,6 @@ const Contact = () => {
                 </div>
               </div>
               
-              {/* Map */}
               <div className="mt-8 rounded-lg overflow-hidden shadow-md h-64 bg-gray-200">
                 <div className="w-full h-full flex items-center justify-center bg-gray-100">
                   <div className="text-center text-gray-500">
@@ -185,7 +189,6 @@ const Contact = () => {
               </div>
             </div>
             
-            {/* Contact Form */}
             <div className="lg:col-span-2">
               <div className="bg-white p-8 rounded-lg shadow-md">
                 <h2 className="text-2xl font-bold mb-6 text-school-dark">Send Us a Message</h2>
@@ -327,7 +330,6 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Departments Section */}
       <section className="section bg-school-light">
         <div className="container-custom">
           <div className="text-center mb-12">
@@ -443,7 +445,6 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
       <section className="section bg-white">
         <div className="container-custom">
           <div className="text-center mb-12">

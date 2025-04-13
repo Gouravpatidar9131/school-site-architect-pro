@@ -1,8 +1,7 @@
-
 import React, { useState } from 'react';
 import PageBanner from '../components/PageBanner';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { AlertCircle, Calendar, Clock, MapPin, Users, Download, ExternalLink } from 'lucide-react';
+import { AlertCircle, Calendar, Clock, MapPin, Users, Download, ExternalLink, Mail } from 'lucide-react';
 
 // Event data
 const events = [
